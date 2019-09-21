@@ -1,4 +1,4 @@
-package com.company;
+package cn.rainmonth;
 
 import java.util.Arrays;
 
@@ -32,6 +32,27 @@ public class SortManager {
                 }
             }
             System.out.println("第" + (i + 1) + "轮冒泡后：" + Arrays.toString(array));
+        }
+    }
+
+    /**
+     * 优化版冒泡排序（避免了对有序部分的冒泡）
+     *
+     * @param array 待排序的数组
+     */
+    public static void bubbleSort1(int[] array) {
+        System.out.println("冒泡前：" + Arrays.toString(array));
+        // 可以避免对有序数组也进行遍历
+        boolean isNotOrderArray = true; // 假设是无序的，
+        for (int i = array.length; isNotOrderArray && i > 0; i--) {
+            isNotOrderArray = false; // 假设当前要比较的部分是有序的
+            for (int j = 1; j < i; j++) {
+                if (array[j - 1] > array[j]) {
+                    AlgorithmsHelper.swap(array, j - 1, j); // 发生过交换，说明不是有序的，假设不成立
+                    isNotOrderArray = true;
+                }
+            }
+            System.out.println("本轮冒泡后：" + Arrays.toString(array));
         }
     }
 

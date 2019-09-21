@@ -1,4 +1,4 @@
-package com.company;
+package cn.rainmonth;
 
 /**
  * 搜索算法管理类
