@@ -1,8 +1,8 @@
 package cn.rainmonth;
 
+import cn.rainmonth.sort.SortManager;
+
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Main {
 
@@ -26,13 +26,18 @@ public class Main {
 
 //        System.out.println(Arrays.toString(result1));
 
-        Set<Integer> set = new HashSet<>();
-        AlgorithmsHelper.randomSet(10, 1, 10, set);
-        for (int j : set) {
-            System.out.print(j + " ");
+        AlgorithmsHelper.isShowLog = false;
+//        int[] arr = AlgorithmsHelper.getFixSizeRandomArrayWithoutSameElement(10, 1, 100);
+        int[] arr = new int[]{90, 77, 10, 72, 58, 30, 62, 71, 51, 12};
+        if (arr != null) {
+            SortManager.quickSort(arr, 0, arr.length);
+            System.out.println("排序后：" + Arrays.toString(arr));
         }
-        System.out.println();
-        System.out.println("set size:" + set.size());
-        System.out.println(set.toString());
+        int[] arr1 = AlgorithmsHelper.getFixSizeRandomArrayWithoutSameElement(10, 1, 100);
+        System.out.println("排序前：" + Arrays.toString(arr1));
+        if (arr1 != null) {
+            SortManager.quickSort1(arr1, 0, arr1.length);
+            System.out.println("排序后：" + Arrays.toString(arr1));
+        }
     }
 }

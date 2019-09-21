@@ -6,6 +6,9 @@ import java.util.Random;
 import java.util.Set;
 
 public class AlgorithmsHelper {
+
+    public static boolean isShowLog = true;
+
     public static int getMaxValue(int[] array) {
         if (!checkArray(array)) {
             return -1;
@@ -39,11 +42,15 @@ public class AlgorithmsHelper {
 
     public static boolean checkArray(int[] array) {
         if (array == null) {
-            System.out.println("数组为空，请检查");
+            if (isShowLog) {
+                System.out.println("数组为空，请检查");
+            }
             return false;
         }
         if (array.length == 0) {
-            System.out.println("数组长度为0，请检查");
+            if (isShowLog) {
+                System.out.println("数组长度为0，请检查");
+            }
             return false;
         }
 
@@ -115,6 +122,7 @@ public class AlgorithmsHelper {
 
     /**
      * 存在问题
+     *
      * @param n
      * @param min
      * @param max
@@ -124,7 +132,8 @@ public class AlgorithmsHelper {
         if (n > (max - min + 1) || max < min) {
             return;
         }
-        System.out.println("expect size:" + n);
+        if (isShowLog)
+            System.out.println("expect size:" + n);
         for (int i = 0; i < n; i++) {
             // 调用Math.random()方法
             int num = (int) (Math.random() * (max - min)) + min;
@@ -197,27 +206,35 @@ public class AlgorithmsHelper {
             source[i - min] = i; // 此时source存储的是（0， 到 len -1)
         }
         // 这个时候每个值都不同
-        System.out.println("待选数组:" + Arrays.toString(source));
+        if (isShowLog)
+            System.out.println("待选数组:" + Arrays.toString(source));
 
         int[] result = new int[size];
         Random rd = new Random();
         int index = 0;
         for (int i = 0; i < result.length; i++) {
             //待选数组0到(len-2)随机一个下标（关键点是保证出现过得数字不会再被渠道
-            System.out.println("len:" + len);
+            if (isShowLog)
+                System.out.println("len:" + len);
             // index的范围（0， len -1)
             index = Math.abs(rd.nextInt() % len);
             // (保证index的值时越来越小的)
             len--;
-            System.out.println("index:" + index);
-            //将随机到的数放入结果集
-            System.out.println("要放入结果数组位置" + (i + 1) + "的数:" + source[index]);
+            if (isShowLog) {
+                System.out.println("index:" + index);
+                //将随机到的数放入结果集
+                System.out.println("要放入结果数组位置" + (i + 1) + "的数:" + source[index]);
+            }
             result[i] = source[index];
-            System.out.println("结果数组:" + Arrays.toString(result));
+            if (isShowLog) {
+                System.out.println("结果数组:" + Arrays.toString(result));
+            }
             // len-1 的值也是动态变化的
             //将待选数组中被随机到的数，用待选数组(len-1)下标对应的数替换（source中len-1位置的数肯定之前没出现过，用没出现过的数来替代已经出现过的
             source[index] = source[len];
-            System.out.println("待选数组:" + Arrays.toString(source));
+            if (isShowLog) {
+                System.out.println("待选数组:" + Arrays.toString(source));
+            }
         }
         return result;
     }
