@@ -1,8 +1,7 @@
 package cn.rainmonth.sort;
 
-import cn.rainmonth.AlgorithmsHelper;
+import cn.rainmonth.helper.AlgorithmsHelper;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -66,7 +65,9 @@ public class SortManager {
      * @param array 待排序的数组
      */
     public static void quickSort(int[] array, int bgn, int end) {
-        System.out.println("排序前：" + Arrays.toString(array));
+        if (AlgorithmsHelper.isShowLog) {
+            System.out.println("排序前：" + Arrays.toString(array));
+        }
         //数组arr空or仅有一个元素则退出（递归终止条件）
         if (bgn >= end - 1)
             return;
