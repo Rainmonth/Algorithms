@@ -60,7 +60,7 @@ public class SortManager {
     }
 
     /**
-     * 排序思想：选择一个元素的值作为基准，将大于改值的元素放在右边，小于改值的元素放在左边
+     * 排序思想：选择一个元素的值作为基准，将大于该值的元素放在右边，小于改值的元素放在左边
      * {5,4,6,8,3}
      *
      * @param array 待排序的数组
@@ -92,49 +92,20 @@ public class SortManager {
             }
         }
         array[l] = standard;
-        System.out.println("标准元素的位置：" + l);
-        System.out.println(Arrays.toString(array));
-
-        System.out.println("左边排序：");
-        quickSort(array, bgn, l);
-        System.out.println("右边排序：");
-        quickSort(array, r + 1, end);
-    }
-
-
-    /*快排*/
-    public static void quickSort1(int[] arr, int bgn, int end)  //arr must be the reference of real param
-    {
-        //数组arr空or仅有一个元素则退出（递归终止条件）
-        if (bgn >= end - 1)
-            return;
-
-        int lindex = bgn;
-        int rindex = end - 1;
-        int std = arr[lindex];
-        while (lindex < rindex) {
-            while (lindex < rindex) {
-                if (arr[rindex] < std) {
-                    arr[lindex++] = arr[rindex];
-                    break;
-                }
-                --rindex;
-            }
-
-            while (lindex < rindex) {
-                if (arr[lindex] >= std) {
-                    arr[rindex--] = arr[lindex];
-                    break;
-                }
-                ++lindex;
-            }
+        if (AlgorithmsHelper.isShowLog) {
+            System.out.println("标准元素的位置：" + l);
+            System.out.println(Arrays.toString(array));
         }
 
-        arr[lindex] = std;
-        quickSort1(arr, bgn, lindex);
-        quickSort1(arr, rindex + 1, end);
+        if (AlgorithmsHelper.isShowLog) {
+            System.out.println("左边排序：");
+        }
+        quickSort(array, bgn, l);
+        if (AlgorithmsHelper.isShowLog) {
+            System.out.println("右边排序：");
+        }
+        quickSort(array, r + 1, end);
     }
-
 
     /**
      * 排序思想：
