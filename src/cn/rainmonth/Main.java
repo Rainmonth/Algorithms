@@ -28,10 +28,11 @@ public class Main {
 //        System.out.println(Arrays.toString(result1));
 
         AlgorithmsHelper.isShowLog = false;
-        int[] arr = AlgorithmsHelper.getFixSizeRandomArrayWithoutSameElement(500, 1, 10000);
-//        int[] arr = new int[]{90, 77, 10, 72, 58, 30, 62, 71, 51, 12};
+//        int[] arr = AlgorithmsHelper.getFixSizeRandomArrayWithoutSameElement(500, 1, 10000);
+        int[] arr = new int[]{90, 77, 10, 72, 58, 30};
+        System.out.println("排序前：" + Arrays.toString(arr));
         if (arr != null) {
-            SortManager.quickSort(arr, 0, arr.length);
+            SortManager.shellSort(arr, 0, arr.length);
             System.out.println("排序后：" + Arrays.toString(arr));
         }
         int[] arr1 = AlgorithmsHelper.getFixSizeRandomArrayWithoutSameElement(10, 1, 100);

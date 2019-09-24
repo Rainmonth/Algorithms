@@ -135,6 +135,35 @@ public class SortManager {
     }
 
     /**
+     * 排序思想：插入排序的变种
+     * 为了减少数据移动的次数，在无序数组长度较大时采用较大的步长，然后将步长一次减小至1
+     * （为什么这样，因为插入排序在数组接近有序的时候效率更高)
+     *
+     * @param array 待排序的数组
+     */
+    public static void shellSort(int[] array, int bgn, int end) {
+        for (int step = (end - bgn) / 2; step > 0; step /= 2) {
+            for (int i = bgn; i < step; ++i) {
+                for (int j = i + step; j < end; j += step) {
+                    int k = j - step;
+                    for (; k >= i; k -= step) {
+                        if (array[k] <= array[j])
+                            break;
+                    }
+                    if (k != j - step) {
+                        int tmp = array[j];
+                        for (int m = j; m > k + step; m -= step) {
+                            array[m] = array[m - step];
+                        }
+                        array[k + step] = tmp;
+                        System.out.println("排序后：" + Arrays.toString(array));
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * 排序思想：每轮选出最小的值
      * 假定选择第一个是最小的，从第二个开始，取值和最小的比较，若比最小的小，则跟新索引，遍历完成后如果最小索引发生了改变，则交换值
      *
@@ -156,14 +185,5 @@ public class SortManager {
                 AlgorithmsHelper.swap(array, i, minIndex);
             }
         }
-    }
-
-    /**
-     * 排序思想：
-     *
-     * @param array 待排序的数组
-     */
-    public void shellSort(int[] array) {
-
     }
 }
