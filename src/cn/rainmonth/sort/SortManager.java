@@ -118,6 +118,15 @@ public class SortManager {
     }
 
     /**
+     * 堆排序
+     *
+     * @param array 待排序的数组
+     */
+    public void heapSort(int[] array) {
+
+    }
+
+    /**
      * {5,2,1,8,7}
      * 排序思想：将数组分为两部分，并将其中一部分看做有序的，依次取另一部分的值与前一部分的值作比较
      *
